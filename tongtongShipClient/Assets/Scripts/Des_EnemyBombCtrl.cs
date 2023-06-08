@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombCtrl : MonoBehaviour
+public class Des_EnemyBombCtrl : MonoBehaviour
 {
     private Rigidbody rb;
     public float force = 500f;
@@ -18,7 +18,7 @@ public class BombCtrl : MonoBehaviour
 
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.CompareTag("ENEMYSHIP") || coll.CompareTag("WALL"))
+        if(coll.CompareTag("SHIP") || coll.CompareTag("WALL"))
             Destroy(gameObject);
     }
 
