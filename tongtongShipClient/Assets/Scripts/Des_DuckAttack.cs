@@ -85,7 +85,7 @@ public class Des_DuckAttack : MonoBehaviour
 
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.CompareTag("ENEMYBOMB"))
+        if(coll.CompareTag("ENEMYBOMB") && hp > 0)
         {
             hp--;
         }
