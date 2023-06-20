@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Des_DuckCtrl : MonoBehaviour
 {
-    public float moveSpeed = 0.7f;
+    public float turnSpeed = 0.7f;
     public int rotateSpeed = 100;
+    public float maxSpeed = 7f;
     private CharacterController controller;
     private Rigidbody rb;
     private new Transform transform;
@@ -28,6 +29,11 @@ public class Des_DuckCtrl : MonoBehaviour
         if(vAxis < -0.9)
             moveVec = -moveVec;
 
-        rb.AddForce(moveVec * moveSpeed * 0.1f);
+        rb.AddForce(moveVec * turnSpeed * 0.1f);
+
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * maxSpeed;
+        }
     }
 }
