@@ -3277,8 +3277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7f9c8fe23297b479649e9ce59e9304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 5
-  rotateSpeed: 100
+  controlOverBoat: 5
+  rotateSpeed: 50
   maxSpeed: 7
 --- !u!114 &2036117766
 MonoBehaviour:
