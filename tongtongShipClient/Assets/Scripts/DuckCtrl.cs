@@ -4,43 +4,36 @@ using UnityEngine;
 
 public class DuckCtrl : MonoBehaviour
 {
-    private Vector3 oldMoveVec;
-    private Vector3 moveVec;
-    public float inertia = 0.99f;
-    public float moveSpeed = 4f;
-    public int rotateSpeed = 100;
-    private float multSpeed = 1f;
-
+    public float controlOverBoat = 5f;
+    public int rotateSpeed = 50;
+    public float maxSpeed = 7f;
     private CharacterController controller;
+    private Rigidbody rb;
     private new Transform transform;
-    private int k;
-
+    private Vector3 moveVec;
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         transform = GetComponent<Transform>();
-    }
-
-    void Update()
-    {
-        Move();
     }
 
     float hAxis => Input.GetAxis("Horizontal");
     float vAxis => Input.GetAxis("Vertical");
 
-    void Move()
+    void Update()
     {
-        transform.Rotate(Vector3.up*rotateSpeed*Time.deltaTime*hAxis);
-
+        transform.Rotate(Vector3.up*rotateSpeed*2*Time.deltaTime*hAxis);
         moveVec = transform.forward;
-        if(vAxis < 0)
+
+        if(vAxis < -0.9)
+            moveVec = -moveVec;
+
+        rb.AddForce(moveVec * controlOverBoat * 0.1f);
+
+        if (rb.velocity.magnitude > maxSpeed)
         {
-            multSpeed = vAxis + 1;
+            rb.velocity = rb.velocity.normalized * maxSpeed;
         }
-        else
-            multSpeed = 1;
-        
-        transform.position += moveVec*moveSpeed*Time.deltaTime*multSpeed;
     }
 }

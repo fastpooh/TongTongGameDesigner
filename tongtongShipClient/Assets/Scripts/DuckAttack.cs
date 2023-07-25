@@ -14,6 +14,9 @@ public class DuckAttack : MonoBehaviour
     public GameObject cooltimeWarning;
     public Image coolTimeCircle;
 
+    public int hp = 10;
+    public TextMeshProUGUI hpBoard;
+
     WaitForSeconds warningDisappear = new WaitForSeconds(1f);
     
 
@@ -29,6 +32,7 @@ public class DuckAttack : MonoBehaviour
     {
         CoolTimeUpdate();
         Attack();
+        ShowScoreBoard();
     }
 
     void Attack()
@@ -66,12 +70,25 @@ public class DuckAttack : MonoBehaviour
         }
     }
 
+    void ShowScoreBoard()
+    {
+        hpBoard.text = "HP : " + hp.ToString();
+    }
+
     bool isShootPossible()
     {   
         if(shootCooltime == 0)
             return true;
         else
             return false;
+    }
+
+    void OnTriggerEnter(Collider coll)
+    {
+        if(coll.CompareTag("ENEMYBOMB") && hp > 0)
+        {
+            hp--;
+        }
     }
 
     IEnumerator CoolTimeWarning()

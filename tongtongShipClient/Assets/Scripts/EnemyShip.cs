@@ -38,7 +38,7 @@ public class EnemyShip : MonoBehaviour
         playerTransform = playerDuck.transform;
         agent = GetComponent<NavMeshAgent>();
         agent.destination = playerTransform.position;
-        duckHP = GameObject.Find("RubberDuck").GetComponent<Des_DuckAttack>().hp;
+        duckHP = GameObject.Find("RubberDuck").GetComponent<DuckAttack>().hp;
 
         enemyCoolTime = coolTime;
         agent.speed = enemySpeed;
