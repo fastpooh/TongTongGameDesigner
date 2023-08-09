@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class GameManager_SS : MonoBehaviour
 {
-    public static GameManager_SS Instance;
-
-    public GameObject gameOverUI;
-    public GameObject stageClearUI;
+    public GameOverUI gameOverUI;
+    public StageClearUI stageClearUI;
     public bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;
+
     }
 
     // Update is called once per frame
@@ -23,11 +21,11 @@ public class GameManager_SS : MonoBehaviour
     }
     public void GameOver() {
         PauseGame();
-        gameOverUI.SetActive(true);
+        gameOverUI.SetUp();
     }
     public void StageClear() {
         PauseGame();
-        stageClearUI.SetActive(true);
+        stageClearUI.SetUp();
     }
     public void PauseGame() {
         isPaused = true;
