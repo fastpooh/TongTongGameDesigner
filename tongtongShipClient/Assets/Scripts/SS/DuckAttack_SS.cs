@@ -9,10 +9,10 @@ public class DuckAttack_SS : MonoBehaviour
     public GameObject bombPrefab;
     public Transform shootL;
     public Transform shootR;
-    public float power = 500f;
+    public float power = 15f;
     public float coolTime = 3f;
     private float countDown;
-    private bool canShoot = true;
+    private bool canShoot;
 
     public TextMeshProUGUI timer;
     public GameObject coolTimeWarning;
@@ -21,14 +21,15 @@ public class DuckAttack_SS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        countDown = coolTime;
+        countDown = 0;
+        canShoot = true;
         coolTimeWarning.SetActive(false);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !canShoot) {
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !canShoot) {
             StartCoroutine(CoolTimeWarning());
         }
         if(Input.GetMouseButtonDown(0) && canShoot) {
@@ -36,26 +37,29 @@ public class DuckAttack_SS : MonoBehaviour
             Rigidbody rBody1 = cannonball1.GetComponent<Rigidbody>();
             rBody1.velocity = GetComponent<Rigidbody>().velocity;
             rBody1.AddForce(shootL.forward*power, ForceMode.Impulse);
-            StartCoroutine(Reload(countDown));
+            canShoot = false;
+            StartCoroutine(Reload());
         }
-        if (Input.GetMouseButtonDown(1) && canShoot) {
+        else if (Input.GetMouseButtonDown(1) && canShoot) {
             GameObject cannonball2 = Instantiate(bombPrefab, shootR.position, transform.rotation);
             Rigidbody rBody2 = cannonball2.GetComponent<Rigidbody>();
             rBody2.velocity = GetComponent<Rigidbody>().velocity;
             rBody2.AddForce(shootR.forward*power, ForceMode.Impulse);
-            StartCoroutine(Reload(countDown));
-        }
+            canShoot = false;
+            StartCoroutine(Reload());
+        } 
     }
 
-    IEnumerator Reload(float count) 
+    IEnumerator Reload() 
     {
-        canShoot = false;
-        while( count > 0 ) {
-            timer.text = count.ToString("N0");
-            coolTimeImage.fillAmount = 1 - count/coolTime;
+        countDown = coolTime;
+        while( countDown > 0 ) {
+            timer.text = countDown.ToString("N0");
+            coolTimeImage.fillAmount = 1 - countDown/coolTime;
             yield return new WaitForSeconds(1);
-            count--;
+            countDown--;
         }
+        countDown = 0;
         coolTimeImage.fillAmount = 1;
         timer.text = "Ready!";
         canShoot = true;

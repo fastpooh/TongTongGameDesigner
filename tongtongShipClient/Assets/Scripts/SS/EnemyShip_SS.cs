@@ -32,8 +32,6 @@ public class EnemyShip_SS : MonoBehaviour
     private bool isDead = false;
     private float enemyCoolTime;
 
-    WaitForSeconds rest = new WaitForSeconds(0.3f);
-
     void Start()
     {
         tr = GetComponent<Transform>();

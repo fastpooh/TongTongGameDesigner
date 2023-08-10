@@ -9,6 +9,7 @@ public class EnemyBombCtrl_SS : MonoBehaviour
     void Start()
     {
         StartCoroutine(DestroyDelay(existTime));
+        GetComponent<Rigidbody>().AddForce(transform.forward * 500f);
     }
     void OnTriggerEnter(Collider col) {
         if (col.gameObject.tag == "SHIP") {
