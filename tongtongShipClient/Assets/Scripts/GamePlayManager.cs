@@ -6,14 +6,17 @@ using TMPro;
 
 public class GamePlayManager : MonoBehaviour
 {
+    // People generating variables
     public GameObject peopleSpawnPoint;
     public GameObject person;
 
+    // Timer related variables
     public TextMeshProUGUI timer;
     private float time = 0;
     private int timeMin = 0;
     private int timeSec = 0;
 
+    // People come out at this point of time (seconds)
     public float[] peopleAppearTime = {10, 20, 30, 40, 9999999};
     int idx = 0;
 
@@ -33,6 +36,7 @@ public class GamePlayManager : MonoBehaviour
         }
     }
 
+    // People generated at random point (among 3 points)
     void GeneratePerson()
     {
         Transform[] points = peopleSpawnPoint.GetComponentsInChildren<Transform>();
@@ -41,6 +45,7 @@ public class GamePlayManager : MonoBehaviour
         Instantiate(person, points[randomInt].position, points[randomInt].rotation);
     }
 
+    // Show time on UI
     void GameTimer()
     {
         time += Time.deltaTime;
