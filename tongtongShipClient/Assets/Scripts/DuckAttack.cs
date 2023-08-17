@@ -89,6 +89,23 @@ public class DuckAttack : MonoBehaviour
         {
             hp--;
         }
+        if(coll.CompareTag("FIRE") && hp > 0)
+        {
+            hp--;
+        }
+    }
+    void OnCollisionEnter(Collision coll)
+    {
+
+        if(coll.gameObject.name=="PirateShip" && hp > 0)
+        {
+            hp--;
+            //선원 -1
+        }
+        if(coll.gameObject.name=="TurtleShip" && hp > 0)
+        {
+            hp--;
+        }
     }
 
     IEnumerator CoolTimeWarning()
