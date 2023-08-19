@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SinglePlayBtnManager : MonoBehaviour
 {
-    private int stageNum = 3;
+    private int stageNum = 6;
     private int openStageNum = 1;
 
     public GameObject Stages;
@@ -27,11 +28,14 @@ public class SinglePlayBtnManager : MonoBehaviour
         }
     }
     
-    public void Stage1Btn()
+    public void StageBtn()
     {
-        SceneManager.LoadScene("Stage1");
+        string ButtonName = EventSystem.current.currentSelectedGameObject.name;
+        ButtonName = ButtonName.Substring(5, 1);
+        Debug.Log(ButtonName);
+        SceneManager.LoadScene("Stage"+ButtonName);
     }
-
+    /*
     public void Stage2Btn()
     {
         SceneManager.LoadScene("Stage2");
@@ -41,4 +45,5 @@ public class SinglePlayBtnManager : MonoBehaviour
     {
         SceneManager.LoadScene("Stage3");
     }
+    */
 }
