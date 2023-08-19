@@ -18,7 +18,7 @@ public class DuckCtrl : MonoBehaviour
 
     // Health related variables
     public Image healthbar;
-    private int maxHP = 3;
+    public int maxHP = 3;
     public int duckHp;                      // might cause error because enemy ship is taking duck HP value in Start() function
     public bool isDead = false;
 
