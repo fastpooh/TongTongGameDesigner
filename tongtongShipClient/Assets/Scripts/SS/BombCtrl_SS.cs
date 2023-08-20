@@ -5,11 +5,14 @@ using UnityEngine;
 public class BombCtrl_SS : MonoBehaviour
 {
     public int damage = 10;
-    public float existTime = 2f;
+    public float power = 15f;
+    [SerializeField] private float existTime = 3f;
     private Rigidbody rBody;
     
     void Start()
     {
+        rBody = GetComponent<Rigidbody>();
+        rBody.AddForce(transform.forward * power, ForceMode.Impulse);
         StartCoroutine(DestroyDelay(existTime));
     }
 

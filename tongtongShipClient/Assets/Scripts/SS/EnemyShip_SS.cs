@@ -21,25 +21,26 @@ public class EnemyShip_SS : MonoBehaviour
     private int maxEnemyHP;
     private int duckHP;
 
+    [SerializeField] private InGameUI inGameUI;
+    [SerializeField] private GameManager_SS gameManager;
+    public Image enemyHealthBar;
     public GameObject enemyBomb;
     public int enemyHP = 10;
     public float enemySpeed = 3.5f;
-    public Image healthbar;
     public State state = State.IDLE;
     public float shootRange = 25.0f;
     public float coolTime = 3.0f;
 
-    private bool isDead = false;
     private float enemyCoolTime;
 
     void Start()
     {
+        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager_SS>();
         tr = GetComponent<Transform>();
         playerDuck = GameObject.FindWithTag("SHIP");
         playerTransform = playerDuck.transform;
         agent = GetComponent<NavMeshAgent>();
         agent.destination = playerTransform.position;
-        duckHP = GameObject.FindWithTag("SHIP").GetComponent<DuckCtrl_SS>().duckHP;
         maxEnemyHP = enemyHP;
         enemyCoolTime = coolTime;
         agent.speed = enemySpeed;
@@ -47,19 +48,20 @@ public class EnemyShip_SS : MonoBehaviour
 
     void Update()
     {
-        UpdateHealthBar();
+        UpdateEnemyHealthBar((float) enemyHP/ (float) maxEnemyHP);
         enemyCoolTime = enemyCoolTime - Time.deltaTime;
         if(enemyCoolTime <= 0)
             enemyCoolTime = 0;
             
-        if(enemyHP <= 0 || duckHP <=0)
+        if(enemyHP <= 0 && !gameManager.isOver)
         {
             state = State.DIE;
-            isDead = true;
+            gameManager.StageClear();
+            Debug.Log("enemy died");
             agent.isStopped = true;
         }
 
-        if(!isDead && duckHP > 0)
+        if(!gameManager.isPaused)
         {
             float distance = Vector3.Distance(playerTransform.position, tr.position);
             if(distance < shootRange && enemyCoolTime == 0)
@@ -83,8 +85,7 @@ public class EnemyShip_SS : MonoBehaviour
         Instantiate(enemyBomb, transform.position, transform.rotation*Quaternion.Euler(0, 0, 0));
     }
 
-    void UpdateHealthBar() {
-        healthbar.fillAmount = enemyHP / maxEnemyHP; 
+    void UpdateEnemyHealthBar(float fractionHP) {
+        enemyHealthBar.fillAmount = fractionHP; 
     }
-
 }

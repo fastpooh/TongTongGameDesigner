@@ -1,6 +1,3 @@
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,9 +5,11 @@ using TMPro;
 
 public class GameOverUI : MonoBehaviour
 {
-    public TextMeshProUGUI healthLeftText;
+    [SerializeField] private TextMeshProUGUI healthLeftText;
     private float healthLeft;
+    private GameManager_SS gameManager;
     public void SetUp() {
+        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager_SS>();
         gameObject.SetActive(true);
         healthLeft = GameObject.FindWithTag("ENEMYSHIP").GetComponent<EnemyShip_SS>().enemyHP;
         healthLeftText.text += healthLeft.ToString("N0");;
