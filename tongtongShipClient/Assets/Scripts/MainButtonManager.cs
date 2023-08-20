@@ -36,4 +36,9 @@ public class MainButtonManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ResetBtn()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
