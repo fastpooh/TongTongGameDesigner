@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2571765950212090633}
   - component: {fileID: 1243834851825340728}
   - component: {fileID: 8671464362350727460}
-  - component: {fileID: 5950498625036761299}
+  - component: {fileID: -498299254824230536}
   m_Layer: 0
   m_Name: EnemyBomb
-  m_TagString: ENEMYBOMB
+  m_TagString: BOMB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5950498625036761299
+--- !u!114 &-498299254824230536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4278636858628303703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ba2d307c15498f40a56f0d14f0c0043, type: 3}
+  m_Script: {fileID: 11500000, guid: d67c6260f64ba84448765751e9a2112b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 500
+  damage: 50
+  existTime: 2
