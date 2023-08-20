@@ -15,11 +15,14 @@ public class SinglePlayBtnManager : MonoBehaviour
 
     void Awake()
     {
+        // Get stage values
         if (!PlayerPrefs.HasKey("SingleStage"))
         {
             PlayerPrefs.SetInt("SingleStage", 1); 
         }
         openStageNum = PlayerPrefs.GetInt("SingleStage");
+
+        // Activate accessible stage start buttons
         for (int i = 1; i <= openStageNum; i++)
         {
             GameObject StageBtn = null;
@@ -28,6 +31,7 @@ public class SinglePlayBtnManager : MonoBehaviour
         }
     }
     
+    // Load Stage n scene by clicking button
     public void StageBtn()
     {
         string ButtonName = EventSystem.current.currentSelectedGameObject.name;
