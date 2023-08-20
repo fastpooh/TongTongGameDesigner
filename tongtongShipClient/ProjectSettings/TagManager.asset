@@ -10,6 +10,10 @@ TagManager:
   - WALL
   - ENEMYSHIP
   - COOLTIME
+  - Player1
+  - Player2
+  - Bomb1
+  - Bomb2
   layers:
   - Default
   - TransparentFX
