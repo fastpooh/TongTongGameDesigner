@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MultiScene.unity
     guid: ff55b02a53e2dbb4b92150469e4fd7ed
   - enabled: 1
-    path: Assets/Scenes/StoreScene.unity
+    path: Assets/Scenes/StoreScene2.unity
     guid: d0fc8a5719febec4e9513cd905ca9efa
   - enabled: 1
     path: Assets/Scenes/Stage1.unity
