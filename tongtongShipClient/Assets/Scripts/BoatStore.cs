@@ -20,6 +20,10 @@ public class BoatStore : MonoBehaviour
     // UI lists
     public GameObject boatBtnContainer;
 
+    // Selected Boat UI
+    public Sprite selectedBoatUI;
+    public Sprite notSelectedBoatUI;
+
     void Awake()
     {
         // Get coin values
@@ -42,31 +46,26 @@ public class BoatStore : MonoBehaviour
             PlayerPrefs.SetInt("SelectedBoat", 0);
         }
         selectedBoat = PlayerPrefs.GetInt("SelectedBoat");
-
-
         SetBoatButtons();
-
-        /*
-        for (int i = 1; i <= openStageNum; i++)
-        {
-            GameObject StageBtn = null;
-            StageBtn = GameObject.Find("Stage" + i.ToString() + "Btn");
-            StageBtn.GetComponent<Button>().interactable = true;
-        }
-        */
     }
     
-    void Start()
+    void Start() // Not needed in real games
     {
+        // Initialize coin for testing
         coin = 100;
+
+        // Initialize settings and set boat buttons
+        ClearSettings();
     }
 
     
     void Update()
     {
+        // Show owing coins
         coinUI.text = coin.ToString() + " Coin";
     }
 
+    // Save haveBoat list to database
     void SaveOwningBoat()
     {
         // Convert each bool to an int (true = 1, false = 0) and join them into a single comma-delimited string
@@ -75,6 +74,7 @@ public class BoatStore : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    // Get haveBoat list from database
     void LoadOwningBoat()
     {
         // Retrieve the comma-delimited string and split it into an array
@@ -92,6 +92,7 @@ public class BoatStore : MonoBehaviour
         }
     }
 
+    // Distinguish have boat, selected boat and want-to-buy boats
     void SetBoatButtons()
     {
         int index = 0;
@@ -105,9 +106,17 @@ public class BoatStore : MonoBehaviour
             if(haveBoat[index])
             {
                 if(index == selectedBoat)
+                {
                     boatBtn.text = "Selected";
+                    Image buttonImage = boatBtn.transform.parent.gameObject.GetComponent<Image>();
+                    buttonImage.sprite = selectedBoatUI;
+                }
                 else
+                {
                     boatBtn.text = "Select";
+                    Image buttonImage = boatBtn.transform.parent.gameObject.GetComponent<Image>();
+                    buttonImage.sprite = notSelectedBoatUI;
+                }
             }
             else
                 boatBtn.text = boatPrice[index].ToString() + " Coins";
@@ -116,6 +125,7 @@ public class BoatStore : MonoBehaviour
         }
     }
 
+    // Buy or select boat by clicking the button
     public void BuyOrSelectBoat()
     {
         // Parsing button number
@@ -142,5 +152,23 @@ public class BoatStore : MonoBehaviour
             SaveOwningBoat();
             SetBoatButtons();
         }
+    }
+
+    // Clear all settings
+    public void ClearSettings()
+    {
+        PlayerPrefs.SetInt("SelectedBoat", 0);
+
+        for(int i=0; i<boatPrice.Length; i++)
+        {
+            if(i == 0)
+                haveBoat[i] = true;
+            else
+                haveBoat[i] = false;
+        }
+
+        SaveOwningBoat();
+        LoadOwningBoat();
+        SetBoatButtons();
     }
 }
