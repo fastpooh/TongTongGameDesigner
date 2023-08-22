@@ -68,6 +68,7 @@ public class DuckAttack : MonoBehaviour
         }
     }
 
+    // Update cool time indicator UI
     void CoolTimeUpdate()
     {
         if(countDown > 0)
@@ -84,6 +85,7 @@ public class DuckAttack : MonoBehaviour
         }
     }
 
+    // Check if shooting bomb is possible
     bool isShootPossible()
     {
         if(countDown <= 0)
@@ -92,12 +94,14 @@ public class DuckAttack : MonoBehaviour
             return false;
     }
 
+    // Set cooltime using number of gunners from DuckCtrl.cs script
     public void SetGunnerCooltime()
     {
         gunner = duckInfo.gunners;
         coolTime = coolTimeList[gunner];
     }
 
+    // Cooltime did not pass
     IEnumerator CoolTimeWarning()
     {
         cooltimeWarning.SetActive(true);

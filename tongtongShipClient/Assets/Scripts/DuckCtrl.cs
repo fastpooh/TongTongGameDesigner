@@ -115,6 +115,7 @@ public class DuckCtrl : MonoBehaviour
         }
     }
 
+    // When enough time passes near additional people, he gets aboard
     void OnTriggerStay(Collider coll)
     {
         if(coll.CompareTag("HARBOR"))
@@ -131,6 +132,7 @@ public class DuckCtrl : MonoBehaviour
         }
     }
 
+    // Give up new people from coming aboard
     void OnTriggerExit(Collider coll)
     {
         if(coll.CompareTag("HARBOR"))
