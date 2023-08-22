@@ -53,13 +53,13 @@ public class DuckAttack : MonoBehaviour
     void Attack()
     {
         // Left click when cooltime did not pass
-        if(Input.GetMouseButtonDown(0) && !isShootPossible())
+        if(Input.GetMouseButtonDown(1) && !isShootPossible())
         {
             StartCoroutine(CoolTimeWarning());
         }
 
         // Shoot one bomb when you left click 
-        if(Input.GetMouseButtonDown(0) && isShootPossible() && numberOfShootingBomb == 1)
+        if(Input.GetMouseButtonDown(1) && isShootPossible() && numberOfShootingBomb == 1)
         {
             GameObject bomb1 = Instantiate(bombPrefab, cannonTransform.position, cannonTransform.rotation*Quaternion.Euler(0, 0, 0));
             Rigidbody rBody1 = bomb1.GetComponent<Rigidbody>();
