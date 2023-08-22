@@ -19,7 +19,9 @@ public class DuckAttack : MonoBehaviour
     private GameObject coolTimePanel;
     private TextMeshProUGUI timer;
     private Image coolTimeCircle;
-    public float coolTime = 3f;
+    private float coolTime = 3f;
+    private int gunner;
+    public float[] coolTimeList = {10f, 5f, 3f, 8f, 10f, 12f, 15f, 20f};
     private float countDown;
 
     // Variables related to cooltime warning message
@@ -29,13 +31,14 @@ public class DuckAttack : MonoBehaviour
     void Start()
     {
         // Get DuckCtrl.cs
-        // duckInfo = GetComponent<DuckCtrl>();
+        duckInfo = GetComponent<DuckCtrl>();
 
         // Initialize cooltime circle variables
         coolTimePanel = GameObject.FindWithTag("COOLTIME");
         timer = coolTimePanel.transform.Find("CoolTimer").GetComponent<TextMeshProUGUI>();
         coolTimeCircle = coolTimePanel.transform.Find("CoolTimeCircle").GetComponent<Image>();
-        
+        SetGunnerCooltime();
+
         // Initialize cooltime warning variables
         cooltimeWarning.SetActive(false);
         countDown = 0;
@@ -87,6 +90,12 @@ public class DuckAttack : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public void SetGunnerCooltime()
+    {
+        gunner = duckInfo.gunners;
+        coolTime = coolTimeList[gunner];
     }
 
     IEnumerator CoolTimeWarning()

@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DuckCtrl : MonoBehaviour
 {
+    // DuckAttack script
+    DuckAttack duckAtk;
+
     // Move related variables
     private CharacterController controller;
     private Rigidbody rb;
@@ -12,9 +17,14 @@ public class DuckCtrl : MonoBehaviour
     public Vector3 moveVec;
 
     // Control movement of boat
-    public float controlOverBoat = 5f;  // With higher values, the boat follows your command better
-    public int rotateSpeed = 50;        // With higher values, the boat turns faster     
-    public float maxSpeed = 7f;         // The maximum speed of boat (boat accelerates from speed 0)
+    [SerializeField] private float controlOverBoat = 5f;  // With higher values, the boat follows your command better
+    [SerializeField] private int rotateSpeed = 50;        // With higher values, the boat turns faster     
+    [SerializeField] private float maxSpeed = 7f;         // The maximum speed of boat (boat accelerates from speed 0)
+    
+    // Spec of boat depending on number of people
+    public float[] controlOverBoatList = {1f, 3f, 5f, 8f, 10f, 12f, 15f, 20f};
+    public int[] rotateSpeedList = {1, 3, 5, 8, 10, 12, 13, 14};
+    public float[] maxSpeedList = {1f, 3f, 5f, 7f, 10f, 12f, 13f, 14f};
 
     // Health related variables
     public Image healthbar;
@@ -22,13 +32,34 @@ public class DuckCtrl : MonoBehaviour
     public int duckHp;                      // might cause error because enemy ship is taking duck HP value in Start() function
     public bool isDead = false;
 
+    // People related variables
+    public int paddlers = 3;
+    public int gunners = 2;
+    private TextMeshProUGUI paddlerNumUI;
+    private TextMeshProUGUI gunnerNumUI;
+
+    // People getting on boat variables
+    public float employDelay = 1.5f;
+    private float employTimer = 0f;
+    private Image fillImg;
+
     void Start()
     {
+        // Set duck initially
         controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         transform = GetComponent<Transform>();
         duckHp = maxHP;
         healthbar = GameObject.Find("DuckHPbar").GetComponent<Image>();
+
+        // Set number of paddlers/gunners UI
+        paddlerNumUI = GameObject.Find("paddleNum").GetComponent<TextMeshProUGUI>();
+        gunnerNumUI = GameObject.Find("bombNum").GetComponent<TextMeshProUGUI>();
+        fillImg = GameObject.Find("FillOnBoard").GetComponent<Image>();
+        fillImg.gameObject.SetActive(false);
+
+        // Set DuckAtk script
+        duckAtk = GetComponent<DuckAttack>();
     }
 
     // Input : wasd
@@ -75,5 +106,69 @@ public class DuckCtrl : MonoBehaviour
             if(duckHp <= 0)
                 isDead = true;
         }
+
+        // Enter new people area
+        if(coll.CompareTag("HARBOR"))
+        {
+            employTimer = 0;
+            fillImg.gameObject.SetActive(true);
+        }
+    }
+
+    void OnTriggerStay(Collider coll)
+    {
+        if(coll.CompareTag("HARBOR"))
+        {
+            employTimer += Time.deltaTime;
+            fillImg.fillAmount = employTimer/employDelay;
+            if(employTimer >= employDelay)
+            {
+                paddlers++;
+                Destroy(coll.gameObject);
+                fillImg.gameObject.SetActive(false);
+            }
+            SetBoatSpecAndUI();
+        }
+    }
+
+    void OnTriggerExit(Collider coll)
+    {
+        if(coll.CompareTag("HARBOR"))
+        {
+            fillImg.gameObject.SetActive(false);
+        }
+    }
+
+
+
+    // Button click events
+
+    // Increase paddlers
+    public void IncreasePad()
+    {
+        paddlers++;
+        gunners--;
+        duckAtk.SetGunnerCooltime();
+        SetBoatSpecAndUI();
+    }
+
+    // Decrease paddlers
+    public void IncreaseGun()
+    {
+        paddlers--;
+        gunners++;
+        duckAtk.SetGunnerCooltime();
+        SetBoatSpecAndUI();
+    }
+
+    // Set boat spec
+    public void SetBoatSpecAndUI()
+    {
+        controlOverBoat = controlOverBoatList[paddlers];
+        rotateSpeed = rotateSpeedList[paddlers];
+        maxSpeed = maxSpeedList[paddlers];
+
+        paddlerNumUI.text = paddlers.ToString();
+        gunnerNumUI.text = gunners.ToString();
     }
 }
