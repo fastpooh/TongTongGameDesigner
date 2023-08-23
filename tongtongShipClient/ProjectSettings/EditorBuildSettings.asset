@@ -15,15 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MultiScene.unity
     guid: ff55b02a53e2dbb4b92150469e4fd7ed
   - enabled: 1
-    path: Assets/Scenes/StoreScene2.unity
-    guid: d0fc8a5719febec4e9513cd905ca9efa
+    path: Assets/Scenes/StoreScene.unity
+    guid: 4b353cfb035f8f840ba134ee95521dd0
   - enabled: 1
     path: Assets/Scenes/Stage1.unity
     guid: 4b40323716d3ec547ac001fe58fecc4d
   - enabled: 1
     path: Assets/Scenes/Stage2.unity
-    guid: b1fb448b149b6b346a52b5adfc5a2a87
+    guid: 77e9f4618a3acfa46aac7d814430f8f1
   - enabled: 1
     path: Assets/Scenes/Stage3.unity
-    guid: d677d4d9bd99c4d49b2f8d946c0ea569
+    guid: c57293aecb629784b9f26abfe6a8eb6a
+  - enabled: 1
+    path: Assets/Scenes/Stage4.unity
+    guid: 8bfad5bcd2f08a441bd94c248a81a35b
   m_configObjects: {}

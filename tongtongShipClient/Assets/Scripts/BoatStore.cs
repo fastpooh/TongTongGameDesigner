@@ -55,7 +55,7 @@ public class BoatStore : MonoBehaviour
         coin = 100;
 
         // Initialize settings and set boat buttons
-        ClearSettings();
+        // ClearSettings();
     }
 
     
@@ -92,7 +92,7 @@ public class BoatStore : MonoBehaviour
         }
     }
 
-    // Distinguish have boat, selected boat and want-to-buy boats
+    // Express owning boat, selected boat and want-to-buy boats on UI
     void SetBoatButtons()
     {
         int index = 0;
@@ -132,7 +132,6 @@ public class BoatStore : MonoBehaviour
         string ButtonName = EventSystem.current.currentSelectedGameObject.name;
         ButtonName = ButtonName.Substring(8, 1);
         int number = int.Parse(ButtonName) - 1;
-        // Debug.Log(number.ToString());
 
         // Select boat if you have the boat
         if(haveBoat[number])

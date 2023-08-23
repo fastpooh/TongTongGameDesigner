@@ -7,11 +7,12 @@ using UnityEngine.EventSystems;
 
 public class SinglePlayBtnManager : MonoBehaviour
 {
-    private int stageNum = 6;
-    private int openStageNum = 1;
+    // public GameObject Stages;
+    public int stageNum = 9;  // total number of stages
+    private int openStageNum;
 
-    public GameObject Stages;
-
+    // By clicking these buttons, you enter that stage
+    public Button[] enterButtons;
 
     void Awake()
     {
@@ -30,6 +31,28 @@ public class SinglePlayBtnManager : MonoBehaviour
             StageBtn.GetComponent<Button>().interactable = true;
         }
     }
+
+    void Start()
+    {
+        openStageNum = PlayerPrefs.GetInt("SingleStage");    // stage0 -> openStageNum = 1
+
+        Text btnTxt;
+        for(int i=0; i<stageNum; i++)
+        {
+            if(i < openStageNum)
+            {
+                btnTxt = enterButtons[i].GetComponentInChildren<Text>();
+                btnTxt.text = "Clear!\n";
+            }
+            else
+            {
+                btnTxt = enterButtons[i].GetComponentInChildren<Text>();
+                btnTxt.text = "Start!\n";
+            }
+
+        }
+    }
+
     
     // Load Stage n scene by clicking button
     public void StageBtn()
@@ -39,15 +62,4 @@ public class SinglePlayBtnManager : MonoBehaviour
         Debug.Log(ButtonName);
         SceneManager.LoadScene("Stage"+ButtonName);
     }
-    /*
-    public void Stage2Btn()
-    {
-        SceneManager.LoadScene("Stage2");
-    }
-
-    public void Stage3Btn()
-    {
-        SceneManager.LoadScene("Stage3");
-    }
-    */
 }
