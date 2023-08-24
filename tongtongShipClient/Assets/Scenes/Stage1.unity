@@ -5659,7 +5659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916580118919261933, guid: d1b2fe0646524b5409e56de2ac5cdd74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.93
+      value: -19.62
       objectReference: {fileID: 0}
     - target: {fileID: 5916580118919261933, guid: d1b2fe0646524b5409e56de2ac5cdd74, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5667,7 +5667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916580118919261933, guid: d1b2fe0646524b5409e56de2ac5cdd74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.56
+      value: -18.26
       objectReference: {fileID: 0}
     - target: {fileID: 5916580118919261933, guid: d1b2fe0646524b5409e56de2ac5cdd74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6067,7 +6067,6 @@ MonoBehaviour:
   failTime: {fileID: 496283873}
   failHP: {fileID: 361041641}
   failCoin: {fileID: 541942225}
-  player: {fileID: 2036117765}
   enemy1: {fileID: 1878207600}
   enemy2: {fileID: 1826322612}
   enemy3: {fileID: 1554730568}

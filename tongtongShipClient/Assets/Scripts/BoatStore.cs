@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Data.Common;
 
 public class BoatStore : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class BoatStore : MonoBehaviour
     public TextMeshProUGUI coinUI;
 
     // Owning Boat variables
-    public List<bool> haveBoat = new List<bool> {true, false, false, false, false, false};
-    public int[] boatPrice = {1, 3, 5, 8, 10, 12};
+    public List<bool> haveBoat = new List<bool> {true, false, false, false, false, false, false};
+    private int[] boatPrice = {1, 6, 12, 20, 30, 40, 50};
     public int selectedBoat = 0;
 
     // UI lists
@@ -26,10 +27,13 @@ public class BoatStore : MonoBehaviour
 
     void Awake()
     {
+        // To start fresh
+        // ClearSettings();
+
         // Get coin values
         if (!PlayerPrefs.HasKey("Coin"))
         {
-            PlayerPrefs.SetInt("Coin", 0);
+            PlayerPrefs.SetInt("Coin", 10);
         }
         coin = PlayerPrefs.GetInt("Coin");
         coinUI.text = coin.ToString() + " Coin";
@@ -47,15 +51,6 @@ public class BoatStore : MonoBehaviour
         }
         selectedBoat = PlayerPrefs.GetInt("SelectedBoat");
         SetBoatButtons();
-    }
-    
-    void Start() // Not needed in real games
-    {
-        // Initialize coin for testing
-        coin = 100;
-
-        // Initialize settings and set boat buttons
-        // ClearSettings();
     }
 
     
@@ -96,6 +91,7 @@ public class BoatStore : MonoBehaviour
     void SetBoatButtons()
     {
         int index = 0;
+
         foreach (Transform boat in boatBtnContainer.transform)
         {
             TextMeshProUGUI boatBtn = boat.GetComponentInChildren<TextMeshProUGUI>();
@@ -122,6 +118,7 @@ public class BoatStore : MonoBehaviour
                 boatBtn.text = boatPrice[index].ToString() + " Coins";
 
             index++;
+            // Debug.Log("index : " + index.ToString());
         }
     }
 
@@ -156,7 +153,9 @@ public class BoatStore : MonoBehaviour
     // Clear all settings
     public void ClearSettings()
     {
-        PlayerPrefs.SetInt("SelectedBoat", 0);
+        PlayerPrefs.DeleteKey("Coin");
+        PlayerPrefs.DeleteKey("HaveBoat");
+        PlayerPrefs.DeleteKey("SelectedBoat");
 
         for(int i=0; i<boatPrice.Length; i++)
         {
