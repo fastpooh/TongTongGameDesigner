@@ -590,9 +590,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3648751998988867176}
+  - component: {fileID: -3005689397821501578}
+  - component: {fileID: 7524301505946950234}
+  - component: {fileID: 3600020312745336649}
+  - component: {fileID: -6802379583837346175}
   m_Layer: 0
   m_Name: Peacock
-  m_TagString: Untagged
+  m_TagString: SHIP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -625,9 +629,107 @@ Transform:
   - {fileID: 6065701155140439185}
   - {fileID: 9119006458968009622}
   - {fileID: 346457742418213083}
+  - {fileID: 2917471210658634889}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &-3005689397821501578
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172910720377818322}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!65 &7524301505946950234
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172910720377818322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2.5}
+  m_Center: {x: 0, y: 0.95, z: 0.47}
+--- !u!114 &3600020312745336649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172910720377818322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7f9c8fe23297b479649e9ce59e9304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVec: {x: 0, y: 0, z: 0}
+  controlOverBoat: 5
+  rotateSpeed: 50
+  maxSpeed: 7
+  controlOverBoatList:
+  - 1
+  - 3
+  - 5
+  - 8
+  - 10
+  - 12
+  - 15
+  - 20
+  rotateSpeedList: 010000000300000005000000080000000a0000000c0000000d0000000e000000
+  maxSpeedList:
+  - 1
+  - 3
+  - 5
+  - 7
+  - 10
+  - 12
+  - 13
+  - 14
+  healthbar: {fileID: 0}
+  maxHP: 3
+  duckHp: 0
+  isDead: 0
+  paddlers: 3
+  gunners: 2
+  employDelay: 1.5
+--- !u!114 &-6802379583837346175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172910720377818322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f9b64faebba8c49bbb3a0651c03132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannonTransform: {fileID: 2917471210658634889}
+  bombPrefab: {fileID: 4278636858628303703, guid: 1317dc592a8173045adc1279dd51b100, type: 3}
+  numberOfShootingBomb: 1
+  power: 300
+  coolTime: 3
+  coolTimeList:
+  - 10
+  - 9
+  - 7
+  - 5
+  - 3
+  - 2
+  - 1.5
+  - 1
 --- !u!1 &4465788366017549803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,6 +1394,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7798041246619566284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2917471210658634889}
+  m_Layer: 0
+  m_Name: cannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2917471210658634889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798041246619566284}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -1.064, y: 0.352, z: 0.172}
+  m_LocalScale: {x: 0.83333325, y: 0.83333325, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3648751998988867176}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &8215169887125832456
 GameObject:
   m_ObjectHideFlags: 0
