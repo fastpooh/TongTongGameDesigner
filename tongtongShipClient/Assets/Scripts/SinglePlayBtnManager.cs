@@ -19,7 +19,7 @@ public class SinglePlayBtnManager : MonoBehaviour
         // Get stage values
         if (!PlayerPrefs.HasKey("SingleStage"))
         {
-            PlayerPrefs.SetInt("SingleStage", 1); 
+            PlayerPrefs.SetInt("SingleStage", 1);
         }
         openStageNum = PlayerPrefs.GetInt("SingleStage");
 
