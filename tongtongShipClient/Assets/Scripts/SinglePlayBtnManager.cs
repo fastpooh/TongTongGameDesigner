@@ -16,6 +16,7 @@ public class SinglePlayBtnManager : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.SetInt("SingleStage", 9);
         // Get stage values
         if (!PlayerPrefs.HasKey("SingleStage"))
         {
