@@ -20,9 +20,21 @@ public class GamePlayManager : MonoBehaviour
     public float[] peopleAppearTime = {10, 20, 30, 40, 9999999};
     int idx = 0;
 
+    // Where duck appears when game starts
+    public Transform spawnPoint;
+    public GameObject[] boatList;
+
     void Start()
     {
-        
+        // Set current Boat
+        if (!PlayerPrefs.HasKey("SelectedBoat"))
+        {
+            PlayerPrefs.SetInt("SelectedBoat", 0);
+        }
+        int selectedBoatIdx = PlayerPrefs.GetInt("SelectedBoat");
+
+        // Instantiate the boat you have
+        Instantiate(boatList[selectedBoatIdx], spawnPoint.position, spawnPoint.rotation);
     }
 
    

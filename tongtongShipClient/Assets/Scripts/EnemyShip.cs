@@ -34,32 +34,27 @@ public class EnemyShip : MonoBehaviour
     public bool isDie = false;
 
     // Variables about player(Duck)
+    private bool foundBoat;
     private GameObject playerDuck;
     private Transform playerTransform;
     public int duckHP;
 
     void Start()
     {
-        // Initialize player duck ship
-        playerDuck = GameObject.FindWithTag("SHIP");
-        playerTransform = playerDuck.transform;
-
-        // Initialize enemy ship
-        tr = GetComponent<Transform>();
-        agent = GetComponent<NavMeshAgent>();
-        agent.destination = playerTransform.position;
-        agent.speed = enemySpeed;
-        enemyHP = enemyMaxHp;
-        enemyCountDown = 0;
+        foundBoat = false;
+        StartCoroutine(FindDuckBoat());
     }
 
     void Update()
     {
-        UpdateDuckHp();
-        MoveAttack();
-        EnemyCoolTimeUpdate();
-        UpdateEnemyHealthBar();
-        CheckGameEnds();
+        if(foundBoat)
+        {
+            UpdateDuckHp();
+            MoveAttack();
+            EnemyCoolTimeUpdate();
+            UpdateEnemyHealthBar();
+            CheckGameEnds();
+        }
     }
     
     void UpdateDuckHp()
@@ -132,5 +127,22 @@ public class EnemyShip : MonoBehaviour
     {
         if(coll.CompareTag("BOMB") && enemyHP > 0)
             enemyHP--;
+    }
+
+    IEnumerator FindDuckBoat()
+    {
+        yield return new WaitForSeconds(0.01f);
+        // Initialize player duck ship
+        playerDuck = GameObject.FindWithTag("SHIP");
+        playerTransform = playerDuck.transform;
+
+        // Initialize enemy ship
+        tr = GetComponent<Transform>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.destination = playerTransform.position;
+        agent.speed = enemySpeed;
+        enemyHP = enemyMaxHp;
+        enemyCountDown = 0;
+        foundBoat = true;
     }
 }
