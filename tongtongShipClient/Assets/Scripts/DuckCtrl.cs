@@ -17,14 +17,14 @@ public class DuckCtrl : MonoBehaviour
     public Vector3 moveVec;
 
     // Control movement of boat
-    [SerializeField] private float controlOverBoat = 5f;  // With higher values, the boat follows your command better
-    [SerializeField] private int rotateSpeed = 50;        // With higher values, the boat turns faster     
-    [SerializeField] private float maxSpeed = 7f;         // The maximum speed of boat (boat accelerates from speed 0)
+    public float controlOverBoat = 18f;  // With higher values, the boat follows your command better
+    public int rotateSpeed = 50;        // With higher values, the boat turns faster     
+    public float maxSpeed = 4.5f;         // The maximum speed of boat (boat accelerates from speed 0)
     
     // Spec of boat depending on number of people
-    public float[] controlOverBoatList = {1f, 3f, 5f, 8f, 10f, 12f, 15f, 20f};
-    public int[] rotateSpeedList = {1, 3, 5, 8, 10, 12, 13, 14};
-    public float[] maxSpeedList = {1f, 3f, 5f, 7f, 10f, 12f, 13f, 14f};
+    private float[] controlOverBoatList = {10f, 15f, 18f, 22f, 26f, 30f, 33f, 37f};
+    private int[] rotateSpeedList = {30, 40, 50, 55, 65, 70, 75, 80};
+    private float[] maxSpeedList = {3f, 4f, 4.5f, 5f, 6f, 7f, 8f, 9f};
 
     // Health related variables
     public Image healthbar;
@@ -42,6 +42,9 @@ public class DuckCtrl : MonoBehaviour
     public float employDelay = 1.5f;
     private float employTimer = 0f;
     private Image fillImg;
+
+    // For testing
+    // public TextMeshProUGUI ctrlOverBoat;
 
     void Start()
     {
@@ -70,6 +73,8 @@ public class DuckCtrl : MonoBehaviour
     {
         MoveTurn();
         UpdateHealthBar();
+
+        // ctrlOverBoat.text = controlOverBoat.ToString();
     }
 
     void MoveTurn()

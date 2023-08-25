@@ -16,6 +16,7 @@ public class SinglePlayBtnManager : MonoBehaviour
 
     void Awake()
     {
+        PlayerPrefs.SetInt("SingleStage", 1);
         // Get stage values
         if (!PlayerPrefs.HasKey("SingleStage"))
         {
@@ -42,12 +43,16 @@ public class SinglePlayBtnManager : MonoBehaviour
                 btnTxt = enterButtons[i].GetComponentInChildren<Text>();
                 btnTxt.text = "Clear!\n";
             }
-            else
+            else if(i == openStageNum - 1)
             {
                 btnTxt = enterButtons[i].GetComponentInChildren<Text>();
                 btnTxt.text = "Start!\n";
             }
-
+            else
+            {
+                btnTxt = enterButtons[i].GetComponentInChildren<Text>();
+                btnTxt.text = "Not Ready\n";
+            }
         }
     }
 

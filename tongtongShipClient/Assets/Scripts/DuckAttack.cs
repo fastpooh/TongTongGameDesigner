@@ -19,9 +19,9 @@ public class DuckAttack : MonoBehaviour
     private GameObject coolTimePanel;
     private TextMeshProUGUI timer;
     private Image coolTimeCircle;
-    [SerializeField] private float coolTime = 3f;
+    [SerializeField] private float coolTime = 5f;
     private int gunner;
-    public float[] coolTimeList = {10f, 9f, 7f, 5f, 3f, 2f, 1.5f, 1f};
+    private float[] coolTimeList = {7f, 5f, 4.5f, 4f, 3.5f, 3f, 2.5f, 2f};
     private float countDown;
 
     // Variables related to cooltime warning message

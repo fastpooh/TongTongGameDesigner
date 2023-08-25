@@ -5,7 +5,7 @@ using UnityEngine;
 public class BombCtrl : MonoBehaviour
 {
     private SphereCollider sphereColl;
-    WaitForSeconds waitBeforeDestroy = new WaitForSeconds(3f);
+    WaitForSeconds waitBeforeDestroy = new WaitForSeconds(5f);
     WaitForSeconds explosion = new WaitForSeconds(0.1f);
 
     void Start()

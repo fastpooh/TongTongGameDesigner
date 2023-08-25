@@ -26,7 +26,7 @@ public class EnemyShip : MonoBehaviour
 
     // Spec of enemy ship
     public int enemyMaxHp = 3;
-    public int enemyHP;
+    public int enemyHP = 3;
     public float enemySpeed = 3.5f;
     public float coolTime = 3.0f;
     public float shootRange = 25.0f;
