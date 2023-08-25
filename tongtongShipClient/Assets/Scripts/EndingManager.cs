@@ -39,6 +39,9 @@ public class EndingManager : MonoBehaviour
     // Reward coin related variables
     private int coin;
 
+    // Stage related variables
+    private int stageNum = 9;
+
     void Start()
     {
         // Find my Boat
@@ -125,7 +128,7 @@ public class EndingManager : MonoBehaviour
         }
         string nextScene = "Stage" + (n + 1).ToString();
 
-        if (n < 6)
+        if (n < stageNum)
         {
             SceneManager.LoadScene(nextScene);
         }

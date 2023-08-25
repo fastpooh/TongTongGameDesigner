@@ -24,11 +24,9 @@ public class SinglePlayBtnManager : MonoBehaviour
         openStageNum = PlayerPrefs.GetInt("SingleStage");
 
         // Activate accessible stage start buttons
-        for (int i = 1; i <= openStageNum; i++)
+        for (int i = 0; i < openStageNum; i++)
         {
-            GameObject StageBtn = null;
-            StageBtn = GameObject.Find("Stage" + i.ToString() + "Btn");
-            StageBtn.GetComponent<Button>().interactable = true;
+            enterButtons[i].interactable = true;
         }
     }
 
@@ -39,7 +37,7 @@ public class SinglePlayBtnManager : MonoBehaviour
         Text btnTxt;
         for(int i=0; i<stageNum; i++)
         {
-            if(i < openStageNum)
+            if(i < openStageNum - 1)
             {
                 btnTxt = enterButtons[i].GetComponentInChildren<Text>();
                 btnTxt.text = "Clear!\n";
