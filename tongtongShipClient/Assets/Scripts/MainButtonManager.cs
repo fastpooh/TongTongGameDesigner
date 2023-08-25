@@ -7,6 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class MainButtonManager : MonoBehaviour
 {
+    public GameObject creditsUI;
+
+    private void Start()
+    {
+        creditsUI.SetActive(false);
+    }
+
     public void SinglePlayBtn()
     {
         SceneManager.LoadScene("SingleScene");
@@ -29,7 +36,12 @@ public class MainButtonManager : MonoBehaviour
 
     public void CreditsBtn()
     {
-        
+        creditsUI.SetActive(true);
+    }
+
+    public void ExitCredits()
+    {
+        creditsUI.SetActive(false);
     }
 
     public void EndBtn()
