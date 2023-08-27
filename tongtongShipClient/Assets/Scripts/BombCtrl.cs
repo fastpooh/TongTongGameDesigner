@@ -17,7 +17,7 @@ public class BombCtrl : MonoBehaviour
     // Destroyed When it hits walls or enemy ship
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.CompareTag("ENEMYSHIP") || coll.CompareTag("WALL"))
+        if(coll.CompareTag("ENEMYSHIP") || coll.CompareTag("PirateSmall") || coll.CompareTag("PirateLarge") || coll.CompareTag("TurtleShip") || coll.CompareTag("WALL"))
         {
             Explode();
             Destroy(gameObject);

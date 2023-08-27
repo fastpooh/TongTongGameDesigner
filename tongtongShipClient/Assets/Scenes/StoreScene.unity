@@ -780,7 +780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC08\uB9E4\uAE30 \uD1B5\uD1B5\uBC30"
+  m_text: "\uD22C\uBA85 \uD1B5\uD1B5\uBC30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52a8a304619853d45b00cdba3a004f0c, type: 2}
   m_sharedMaterial: {fileID: 6206946770941667303, guid: 52a8a304619853d45b00cdba3a004f0c, type: 2}
@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 0.21176471}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

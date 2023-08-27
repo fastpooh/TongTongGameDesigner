@@ -22,13 +22,13 @@ public class DuckCtrl : MonoBehaviour
     private float maxSpeed = 4.5f;         // The maximum speed of boat (boat accelerates from speed 0)
     
     // Spec of boat depending on number of people
-    private float[] controlOverBoatList = {10f, 15f, 18f, 22f, 26f, 30f, 33f, 37f};
-    private int[] rotateSpeedList = {30, 40, 50, 55, 65, 70, 75, 80};
-    private float[] maxSpeedList = {3f, 4f, 4.5f, 5f, 6f, 7f, 8f, 9f};
+    private float[] controlOverBoatList = {10f, 15f, 18f, 22f, 26f, 30f, 33f, 37f, 40f, 41f, 42f};
+    private int[] rotateSpeedList = {30, 40, 50, 55, 65, 70, 75, 80, 85, 90, 95};
+    private float[] maxSpeedList = {3f, 4f, 4.5f, 5f, 6f, 7f, 8f, 9f, 9.1f, 9.2f, 9.5f};
 
     // Health related variables
     public Image healthbar;
-    public int maxHP = 3;
+    public int maxHP = 10;
     public int duckHp;                      // might cause error because enemy ship is taking duck HP value in Start() function
     public bool isDead = false;
 
@@ -112,6 +112,7 @@ public class DuckCtrl : MonoBehaviour
         {
             employTimer = 0;
             fillImg.gameObject.SetActive(true);
+            StartCoroutine(DestroyFill());
         }
 
         if (coll.CompareTag("FIRE") && duckHp > 0)
@@ -129,6 +130,9 @@ public class DuckCtrl : MonoBehaviour
     {
         if(coll.CompareTag("HARBOR"))
         {
+            if(!fillImg.gameObject.activeSelf)
+                fillImg.gameObject.SetActive(true);
+            
             employTimer += Time.deltaTime;
             fillImg.fillAmount = employTimer/employDelay;
             if(employTimer >= employDelay)
@@ -152,24 +156,25 @@ public class DuckCtrl : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
+        if (coll.collider.CompareTag("PirateSmall") && duckHp > 0)
+        {
+            paddlers--;
+            SetBoatSpecAndUI();
+        }
+        if (coll.collider.CompareTag("PirateLarge") && duckHp > 0)
+        {
+            duckHp--;
+            paddlers--;
+            SetBoatSpecAndUI();
+        }
+        if (coll.collider.CompareTag("TurtleShip") && duckHp > 0)
+        {
+            duckHp--;
+            SetBoatSpecAndUI();
+        }
 
-        if (coll.gameObject.name == "PirateSmall" && duckHp > 0)
-        {
-            duckHp--;
-            paddlers--;
-            SetBoatSpecAndUI();
-        }
-        if (coll.gameObject.name == "PirateLarge" && duckHp > 0)
-        {
-            duckHp--;
-            paddlers--;
-            SetBoatSpecAndUI();
-        }
-        if (coll.gameObject.name == "TurtleShip" && duckHp > 0)
-        {
-            duckHp--;
-            SetBoatSpecAndUI();
-        }
+        if (duckHp <= 0)
+            isDead = true;
     }
 
 
@@ -202,5 +207,12 @@ public class DuckCtrl : MonoBehaviour
 
         paddlerNumUI.text = paddlers.ToString();
         gunnerNumUI.text = gunners.ToString();
+    }
+
+    IEnumerator DestroyFill()
+    {
+        yield return new WaitForSeconds(1.51f);
+        if(fillImg.gameObject.activeSelf)
+            fillImg.gameObject.SetActive(false);
     }
 }

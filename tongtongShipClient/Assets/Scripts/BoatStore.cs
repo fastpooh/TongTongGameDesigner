@@ -15,7 +15,7 @@ public class BoatStore : MonoBehaviour
 
     // Owning Boat variables
     public List<bool> haveBoat = new List<bool> {true, false, false, false, false, false, false};
-    private int[] boatPrice = {1, 6, 12, 20, 30, 40, 9999};
+    private int[] boatPrice = {1, 10, 25, 40, 50, 70, 9999};
     public int selectedBoat = 0;
 
     // UI lists

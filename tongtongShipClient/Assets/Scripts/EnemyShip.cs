@@ -23,6 +23,7 @@ public class EnemyShip : MonoBehaviour
     public GameObject enemyBomb;
     private float enemyCountDown;
     public State state = State.IDLE;
+    public Transform cannon;
 
     // Spec of enemy ship
     public int enemyMaxHp = 3;
@@ -38,6 +39,9 @@ public class EnemyShip : MonoBehaviour
     private GameObject playerDuck;
     private Transform playerTransform;
     public int duckHP;
+
+    // is this boat a submarine?
+    public bool isSubmarine = false;
 
     void Start()
     {
@@ -94,9 +98,10 @@ public class EnemyShip : MonoBehaviour
     // Fire Bomb
     void ShootBomb()
     {
-        GameObject bomb1 = Instantiate(enemyBomb, transform.position, transform.rotation*Quaternion.Euler(0, 0, 0));
+        GameObject bomb1 = Instantiate(enemyBomb, cannon.position, cannon.rotation*Quaternion.Euler(0, 0, 0));
         Rigidbody rBody1 = bomb1.GetComponent<Rigidbody>();
-        rBody1.AddForce(transform.forward * power);
+        if(!isSubmarine)
+            rBody1.AddForce(transform.forward * power);
         enemyCountDown = coolTime;
     }
 

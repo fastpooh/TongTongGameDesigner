@@ -571,8 +571,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Size: {x: 1.5, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &6879961251754744083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveVec: {x: 0, y: 0, z: 0}
   healthbar: {fileID: 0}
-  maxHP: 3
+  maxHP: 5
   duckHp: 0
   isDead: 0
   paddlers: 3
