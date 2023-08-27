@@ -7308,7 +7308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627747300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.55, y: 2.5, z: -13.75}
+  m_LocalPosition: {x: -22.55, y: 1, z: -13.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9148,9 +9148,9 @@ MonoBehaviour:
   - 9999999
   spawnPoint: {fileID: 1627747301}
   boatList:
-  - {fileID: 6622341743930024387, guid: 1d22dfefaef431c4387d6e468429f910, type: 3}
-  - {fileID: 3883182346508542359, guid: dd6f876de2ed3d0419964298acf34347, type: 3}
-  - {fileID: 8914062970944091608, guid: 0e119ee809345e248a972e17ef7a872a, type: 3}
+  - {fileID: 7923513045491734464, guid: 341e2dc8721b641418d179a0fbe9f07d, type: 3}
+  - {fileID: 6033664200608719940, guid: d4cf64240c5fbf1468e9c62aba964d24, type: 3}
+  - {fileID: 6996727074862151399, guid: a7470a1d07ec82f4ea6f18a11ad744a6, type: 3}
   - {fileID: 4172910720377818322, guid: 0338513530544a549bbd5dc4769564d4, type: 3}
   - {fileID: 6251387400091051359, guid: 7046849e753ad2740be5dc543c557832, type: 3}
   - {fileID: 7373964750506503529, guid: 5ef2449889e35cb4980bfc6011114262, type: 3}
