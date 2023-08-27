@@ -39,7 +39,7 @@ public class UITween : MonoBehaviour
 
     public void MultiPlayPoping()
     {
-        SetActionEvent(_mainButtonManager.MultiPlayBtn);
+        _mainButtonManager.MultiPlayBtn();
         Poping();
     }
 
@@ -51,13 +51,13 @@ public class UITween : MonoBehaviour
 
     public void StatisticsPoping()
     {
-        SetActionEvent(_mainButtonManager.StatisticsBtn);
+        _mainButtonManager.StatisticsBtn();
         Poping();
     }
 
     public void CreditPoping()
     {
-        SetActionEvent(_mainButtonManager.CreditsBtn);
+        _mainButtonManager.CreditsBtn();
         Poping();
     }
 
