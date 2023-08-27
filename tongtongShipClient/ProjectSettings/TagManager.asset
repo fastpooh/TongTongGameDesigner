@@ -11,6 +11,10 @@ TagManager:
   - ENEMYSHIP
   - COOLTIME
   - HARBOR
+  - PirateSmall
+  - PirateLarge
+  - TurtleShip
+  - FIRE
   layers:
   - Default
   - TransparentFX
