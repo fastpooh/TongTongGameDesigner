@@ -78,8 +78,6 @@ public class UITween : MonoBehaviour
         .OnComplete(() =>
         {
             if (_actionEvent != null) _actionEvent();
-
-            /*¾À·Îµå*/
         });
 
         _sequence.Restart();
