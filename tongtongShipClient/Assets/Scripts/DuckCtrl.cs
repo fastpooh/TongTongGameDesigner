@@ -113,6 +113,15 @@ public class DuckCtrl : MonoBehaviour
             employTimer = 0;
             fillImg.gameObject.SetActive(true);
         }
+
+        if (coll.CompareTag("FIRE") && duckHp > 0)
+        {
+            duckHp--;
+
+            if (duckHp <= 0)
+                isDead = true;
+        }
+
     }
 
     // When enough time passes near additional people, he gets aboard
@@ -141,6 +150,27 @@ public class DuckCtrl : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision coll)
+    {
+
+        if (coll.gameObject.name == "PirateSmall" && duckHp > 0)
+        {
+            duckHp--;
+            paddlers--;
+            SetBoatSpecAndUI();
+        }
+        if (coll.gameObject.name == "PirateLarge" && duckHp > 0)
+        {
+            duckHp--;
+            paddlers--;
+            SetBoatSpecAndUI();
+        }
+        if (coll.gameObject.name == "TurtleShip" && duckHp > 0)
+        {
+            duckHp--;
+            SetBoatSpecAndUI();
+        }
+    }
 
 
     // Button click events
