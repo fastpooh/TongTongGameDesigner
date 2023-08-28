@@ -64,6 +64,7 @@ public class DuckAttack : MonoBehaviour
         {
             GameObject bomb1 = Instantiate(bombPrefab, cannonTransform.position, cannonTransform.rotation*Quaternion.Euler(0, 0, 0));
             Rigidbody rBody1 = bomb1.GetComponent<Rigidbody>();
+            rBody1.velocity = GetComponent<Rigidbody>().velocity;
             rBody1.AddForce(cannonTransform.right * power);
             countDown = coolTime;
         }

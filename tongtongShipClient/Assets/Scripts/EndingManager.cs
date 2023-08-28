@@ -95,8 +95,8 @@ public class EndingManager : MonoBehaviour
                 success.SetActive(true);
                 successTime.text = "Play Time : " + timer.text;
                 successHP.text = "Current HP : " + player.duckHp.ToString() + "/" + player.maxHP.ToString();
-                successCoin.text = "Reward : " + (player.duckHp + 300 - int.Parse(timer.text.Substring(0, 2)) * 60 - int.Parse(timer.text.Substring(3, 2))).ToString();
-                AddCoins(player.duckHp + 300 - int.Parse(timer.text.Substring(0, 2)) * 60 - int.Parse(timer.text.Substring(3, 2)));
+                successCoin.text = "Reward : " + (player.duckHp*10).ToString();
+                AddCoins(player.duckHp*10);
                 endingModal.SetActive(true);
                 isPlaying = false;
             }

@@ -17,7 +17,7 @@ public class GamePlayManager : MonoBehaviour
     private int timeSec = 0;
 
     // People come out at this point of time (seconds)
-    public float[] peopleAppearTime = {10, 20, 30, 40, 9999999};
+    private float[] peopleAppearTime = {15, 30, 45, 60, 75, 90, 9999999};
     int idx = 0;
 
     // Where duck appears when game starts
