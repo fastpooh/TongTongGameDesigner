@@ -22,9 +22,9 @@ public class DuckCtrl : MonoBehaviour
     private float maxSpeed = 4.5f;         // The maximum speed of boat (boat accelerates from speed 0)
     
     // Spec of boat depending on number of people
-    private float[] controlOverBoatList = {10f, 15f, 18f, 22f, 26f, 30f, 33f, 37f, 40f, 41f, 42f};
+    private float[] controlOverBoatList = {40f, 50f, 56f, 64f, 72f, 80f, 86f, 94f, 100f, 102f, 104f};
     private int[] rotateSpeedList = {30, 40, 50, 55, 65, 70, 75, 80, 85, 90, 95};
-    private float[] maxSpeedList = {3f, 4f, 4.5f, 5f, 6f, 7f, 8f, 9f, 9.1f, 9.2f, 9.5f};
+    private float[] maxSpeedList = {4f, 5f, 5.5f, 6f, 7f, 8f, 9f, 10f, 10.1f, 10.2f, 10.5f};
 
     // Health related variables
     public Image healthbar;
