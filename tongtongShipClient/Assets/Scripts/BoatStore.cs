@@ -15,7 +15,7 @@ public class BoatStore : MonoBehaviour
 
     // Owning Boat variables
     public List<bool> haveBoat = new List<bool> {true, false, false, false, false, false, false};
-    private int[] boatPrice = {1, 10, 25, 40, 50, 70, 9999};
+    private int[] boatPrice = {1, 10, 25, 40, 50, 75, 100};
     public int selectedBoat = 0;
 
     // UI lists
@@ -25,10 +25,15 @@ public class BoatStore : MonoBehaviour
     public Sprite selectedBoatUI;
     public Sprite notSelectedBoatUI;
 
+    // Sound when you buy the boat
+    public AudioClip boatBuySound;
+    private AudioSource audioSource;
+
     void Awake()
     {
         // To start fresh
         // ClearSettings();
+        // PlayerPrefs.SetInt("Coin", 1000);
 
         // Get coin values
         if (!PlayerPrefs.HasKey("Coin"))
@@ -53,6 +58,14 @@ public class BoatStore : MonoBehaviour
         SetBoatButtons();
     }
 
+    void Start()
+    {
+        // Initialize sound
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = boatBuySound;
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+    }
     
     void Update()
     {
@@ -136,6 +149,7 @@ public class BoatStore : MonoBehaviour
             selectedBoat = number;
             PlayerPrefs.SetInt("SelectedBoat", selectedBoat);
             SetBoatButtons();
+            // PlaySound();
         }
 
         // Buy boat if you don't have the boat
@@ -147,7 +161,14 @@ public class BoatStore : MonoBehaviour
             haveBoat[number] = true;
             SaveOwningBoat();
             SetBoatButtons();
+            PlaySound();
         }
+    }
+
+    // Play sound
+    public void PlaySound()
+    {
+        audioSource.Play();
     }
 
     // Clear all settings
