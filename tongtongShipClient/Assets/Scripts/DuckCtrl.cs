@@ -17,14 +17,14 @@ public class DuckCtrl : MonoBehaviour
     public Vector3 moveVec;
 
     // Control movement of boat
-    private float controlOverBoat = 56f;  // With higher values, the boat follows your command better
+    private float controlOverBoat = 15f;  // With higher values, the boat follows your command better
     private int rotateSpeed = 50;        // With higher values, the boat turns faster     
-    private float maxSpeed = 5.5f;         // The maximum speed of boat (boat accelerates from speed 0)
+    private float maxSpeed = 6.3f;         // The maximum speed of boat (boat accelerates from speed 0)
     
     // Spec of boat depending on number of people
-    private float[] controlOverBoatList = {40f, 50f, 56f, 64f, 72f, 80f, 86f, 94f, 100f, 102f, 104f};
+    private float[] controlOverBoatList = {11f, 13f, 15f, 20f, 24f, 28f, 30f, 33f, 37f, 40f, 50f};
     private int[] rotateSpeedList = {30, 40, 50, 55, 65, 70, 75, 80, 85, 90, 95};
-    private float[] maxSpeedList = {4f, 4.5f, 5f, 5.5f, 6f, 6.5f, 7f, 7.5f, 8f, 8.1f, 8.2f};
+    private float[] maxSpeedList = {5.6f, 6f, 6.3f, 6.7f, 7.1f, 6.8f, 7f, 7.2f, 7.5f, 7.8f, 8f};
 
     // Health related variables
     public Image healthbar;
