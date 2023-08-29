@@ -17,14 +17,14 @@ public class DuckCtrl : MonoBehaviour
     public Vector3 moveVec;
 
     // Control movement of boat
-    private float controlOverBoat = 18f;  // With higher values, the boat follows your command better
+    private float controlOverBoat = 56f;  // With higher values, the boat follows your command better
     private int rotateSpeed = 50;        // With higher values, the boat turns faster     
-    private float maxSpeed = 4.5f;         // The maximum speed of boat (boat accelerates from speed 0)
+    private float maxSpeed = 5.5f;         // The maximum speed of boat (boat accelerates from speed 0)
     
     // Spec of boat depending on number of people
     private float[] controlOverBoatList = {40f, 50f, 56f, 64f, 72f, 80f, 86f, 94f, 100f, 102f, 104f};
     private int[] rotateSpeedList = {30, 40, 50, 55, 65, 70, 75, 80, 85, 90, 95};
-    private float[] maxSpeedList = {4f, 5f, 5.5f, 6f, 7f, 8f, 9f, 10f, 10.1f, 10.2f, 10.5f};
+    private float[] maxSpeedList = {4f, 4.5f, 5f, 5.5f, 6f, 6.5f, 7f, 7.5f, 8f, 8.1f, 8.2f};
 
     // Health related variables
     public Image healthbar;
@@ -69,6 +69,7 @@ public class DuckCtrl : MonoBehaviour
     void Update()
     {
         MoveTurn();
+        ChangePadGun();
         UpdateHealthBar();
     }
 
@@ -158,13 +159,15 @@ public class DuckCtrl : MonoBehaviour
     {
         if (coll.collider.CompareTag("PirateSmall") && duckHp > 0)
         {
-            paddlers--;
+            if(paddlers > 0)
+                paddlers--;
             SetBoatSpecAndUI();
         }
         if (coll.collider.CompareTag("PirateLarge") && duckHp > 0)
         {
             duckHp--;
-            paddlers--;
+            if(paddlers > 0)
+                paddlers--;
             SetBoatSpecAndUI();
         }
         if (coll.collider.CompareTag("TurtleShip") && duckHp > 0)
@@ -177,25 +180,43 @@ public class DuckCtrl : MonoBehaviour
             isDead = true;
     }
 
+    // Set paddler, gunner using buttons
+    void ChangePadGun()
+    {
+        if(!isDead)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+                IncreasePad();
+
+            if(Input.GetKeyDown(KeyCode.E))
+                IncreaseGun();
+        }
+    }
 
     // Button click events
 
     // Increase paddlers
     public void IncreasePad()
     {
-        paddlers++;
-        gunners--;
-        duckAtk.SetGunnerCooltime();
-        SetBoatSpecAndUI();
+        if(gunners > 0)
+        {
+            paddlers++;
+            gunners--;
+            duckAtk.SetGunnerCooltime();
+            SetBoatSpecAndUI();
+        }
     }
 
     // Decrease paddlers
     public void IncreaseGun()
     {
-        paddlers--;
-        gunners++;
-        duckAtk.SetGunnerCooltime();
-        SetBoatSpecAndUI();
+        if(paddlers > 0)
+        {
+            paddlers--;
+            gunners++;
+            duckAtk.SetGunnerCooltime();
+            SetBoatSpecAndUI();
+        }
     }
 
     // Set boat spec

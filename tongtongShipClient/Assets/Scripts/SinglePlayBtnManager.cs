@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class SinglePlayBtnManager : MonoBehaviour
 {
     // public GameObject Stages;
-    public int stageNum = 9;  // total number of stages
+    public int stageNum = 10;  // total number of stages
     private int openStageNum;
 
     // By clicking these buttons, you enter that stage
@@ -25,7 +25,7 @@ public class SinglePlayBtnManager : MonoBehaviour
         openStageNum = PlayerPrefs.GetInt("SingleStage");
 
         // Activate accessible stage start buttons
-        for (int i = 0; i < openStageNum; i++)
+        for (int i = 0; i <= openStageNum; i++)
         {
             enterButtons[i].interactable = true;
         }
@@ -38,12 +38,17 @@ public class SinglePlayBtnManager : MonoBehaviour
         Text btnTxt;
         for(int i=0; i<stageNum; i++)
         {
-            if(i < openStageNum - 1)
+            if (i == 0)
+            {
+                btnTxt = enterButtons[i].GetComponentInChildren<Text>();
+                btnTxt.text = "Try!\n";
+            }
+            else if(i < openStageNum)
             {
                 btnTxt = enterButtons[i].GetComponentInChildren<Text>();
                 btnTxt.text = "Clear!\n";
             }
-            else if (i == openStageNum - 1)
+            else if (i == openStageNum)
             {
                 btnTxt = enterButtons[i].GetComponentInChildren<Text>();
                 btnTxt.text = "Start!\n";

@@ -6305,13 +6305,14 @@ MonoBehaviour:
   cannon: {fileID: 1739960490}
   enemyMaxHp: 3
   enemyHP: 10
-  enemySpeed: 3.5
+  enemySpeed: 3.35
   coolTime: 3
   shootRange: 25
   power: 300
   isDie: 0
   duckHP: 0
   isSubmarine: 0
+  isTutorialBoat: 0
 --- !u!195 &1554730570
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7096,13 +7097,14 @@ MonoBehaviour:
   cannon: {fileID: 2010904604}
   enemyMaxHp: 3
   enemyHP: 10
-  enemySpeed: 3.5
+  enemySpeed: 3.35
   coolTime: 3
   shootRange: 25
   power: 300
   isDie: 0
   duckHP: 0
   isSubmarine: 0
+  isTutorialBoat: 0
 --- !u!195 &1826322614
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7559,6 +7561,7 @@ MonoBehaviour:
   isDie: 0
   duckHP: 0
   isSubmarine: 0
+  isTutorialBoat: 0
 --- !u!54 &1878207606
 Rigidbody:
   m_ObjectHideFlags: 0

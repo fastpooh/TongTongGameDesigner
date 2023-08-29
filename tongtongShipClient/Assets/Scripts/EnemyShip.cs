@@ -43,10 +43,16 @@ public class EnemyShip : MonoBehaviour
     // is this boat a submarine?
     public bool isSubmarine = false;
 
+    // tutorial boat
+    public bool isTutorialBoat = false;
+
     void Start()
     {
         foundBoat = false;
         StartCoroutine(FindDuckBoat());
+
+        if(isTutorialBoat)
+            shootRange = 7.5f;
     }
 
     void Update()
@@ -75,7 +81,8 @@ public class EnemyShip : MonoBehaviour
             if(distance < shootRange && enemyCountDown == 0)
             {
                 state = State.ATTACK;
-                ShootBomb();
+                if(!isTutorialBoat)
+                    ShootBomb();
                 agent.isStopped = true;
             }
             else
