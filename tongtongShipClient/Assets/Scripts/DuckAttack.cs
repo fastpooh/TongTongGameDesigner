@@ -13,7 +13,7 @@ public class DuckAttack : MonoBehaviour
     public Transform cannonTransform;
     public GameObject bombPrefab;
     public int numberOfShootingBomb = 1;
-    public float power = 300f;
+    private float power = 375f;
 
     // Variables related to cooltime circle
     private GameObject coolTimePanel;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1848,8 +1848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -200}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 200, y: -300}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452565606
 MonoBehaviour:
@@ -4851,8 +4851,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122, y: -200}
-  m_SizeDelta: {x: 150, y: 50}
+  m_AnchoredPosition: {x: 200, y: -295}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058884158
 MonoBehaviour:
@@ -4901,8 +4901,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8482,7 +8482,6 @@ MonoBehaviour:
   cannonTransform: {fileID: 1865494821}
   bombPrefab: {fileID: 4278636858628303703, guid: 1317dc592a8173045adc1279dd51b100, type: 3}
   numberOfShootingBomb: 1
-  power: 500
   coolTime: 3
   coolTimeList:
   - 10
@@ -8923,6 +8922,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 622bc998fc4e099408d44e2286d6cac3, type: 3}
+    - target: {fileID: 3275241018898309194, guid: 92a70ec744ac148799c04b1c704a9350, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3275241018898309204, guid: 92a70ec744ac148799c04b1c704a9350, type: 3}
       propertyPath: m_SizeDelta.y
       value: 45
@@ -8959,6 +8962,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 622bc998fc4e099408d44e2286d6cac3, type: 3}
+    - target: {fileID: 3275241019369361627, guid: 92a70ec744ac148799c04b1c704a9350, type: 3}
+      propertyPath: m_Text
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 3275241019369361627, guid: 92a70ec744ac148799c04b1c704a9350, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -9158,6 +9165,10 @@ PrefabInstance:
     - target: {fileID: 3275241020058914373, guid: 92a70ec744ac148799c04b1c704a9350, type: 3}
       propertyPath: m_Name
       value: Setting
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275241020058914373, guid: 92a70ec744ac148799c04b1c704a9350, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3275241020068906105, guid: 92a70ec744ac148799c04b1c704a9350, type: 3}
       propertyPath: m_Color.b
