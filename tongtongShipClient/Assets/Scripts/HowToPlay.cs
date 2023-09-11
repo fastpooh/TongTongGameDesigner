@@ -15,7 +15,7 @@ public class HowToPlay : MonoBehaviour
     void Start()
     {
         startPosition = imageToMove.rectTransform.position;
-        endPosition = new Vector3(startPosition.x - 2000, startPosition.y, startPosition.z); // Adjust the offset as needed
+        endPosition = new Vector3(startPosition.x - 2800, startPosition.y, startPosition.z); // Adjust the offset as needed
     }
 
     void Update()
