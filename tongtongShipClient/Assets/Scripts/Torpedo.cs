@@ -16,7 +16,7 @@ public class Torpedo : MonoBehaviour
     private Transform playerTransform;
 
     private SphereCollider sphereColl;
-    WaitForSeconds waitBeforeDestroy = new WaitForSeconds(3f);
+    WaitForSeconds waitBeforeDestroy = new WaitForSeconds(2.7f);
     WaitForSeconds explosion = new WaitForSeconds(0.1f);
 
     void Start()
