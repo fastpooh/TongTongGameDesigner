@@ -17,7 +17,7 @@ public class SubmarineRising : MonoBehaviour
     
     // About the boats spec
     public float shootRange = 25.0f;
-    public float coolTime = 10f;
+    private float coolTime = 15f;
     public float risingTime = 5.0f;
     private float enemyCountDown;
 
