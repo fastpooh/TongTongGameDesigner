@@ -33,7 +33,7 @@ public class BoatStore : MonoBehaviour
     {
         // To start fresh
         // ClearSettings();
-        PlayerPrefs.SetInt("Coin", 1000);
+        // PlayerPrefs.SetInt("Coin", 1000);
 
         // Get coin values
         if (!PlayerPrefs.HasKey("Coin"))
